@@ -7,3 +7,4 @@ This repository contains the project developed in the Introduction to Data Scien
 - [Getting started](#getting-started)
 
 ## Getting started
+[Draft Project 📕](https://github.com/AdrianoPereira/project-cap394/src/project.ipynb)

@@ -1,0 +1,9 @@
+name: project-cap394
+channels:
+  - conda-forge
+depenencies:
+  - numpy
+  - pandas
+  - matplotlib
+  - jupyter
+  - arm_pyart
