@@ -6,6 +6,8 @@ This repository contains the project developed in the Introduction to Data Scien
 ## Table of Contents
 - [Getting started](#getting-started)
 - [Dataset description](https://github.com/AdrianoPereira/project-cap394/blob/master/src/data_description.ipynb)
+- [Utils](https://github.com/AdrianoPereira/project-cap394/blob/master/src/utils)
+  - [Provide dataset](https://github.com/AdrianoPereira/project-cap394/blob/master/src/utils/createlite.py)
   
 ## Getting started
 [Draft Project 📕](https://github.com/AdrianoPereira/project-cap394/blob/master/src/project.ipynb)
