@@ -8,6 +8,7 @@ This repository contains the project developed in the Introduction to Data Scien
 - [Dataset description](https://github.com/AdrianoPereira/project-cap394/blob/master/src/data_description.ipynb)
 - [Utils](https://github.com/AdrianoPereira/project-cap394/blob/master/src/utils)
   - [Provide dataset](https://github.com/AdrianoPereira/project-cap394/blob/master/src/utils/createlite.py)
-  
+  - [Group data](https://github.com/AdrianoPereira/project-cap394/blob/master/src/utils/groupby.py)
+
 ## Getting started
 [Draft Project 📕](https://github.com/AdrianoPereira/project-cap394/blob/master/src/project.ipynb)
