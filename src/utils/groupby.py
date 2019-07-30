@@ -4,18 +4,6 @@ import os
 import matplotlib.pyplot as plt
 import math
 
-PATH = '../../data/lite/mat'
-path_files = [os.path.join(PATH, path) for path in os.listdir(PATH)]
-
-df = [pd.read_csv(file, sep='\s+') for file in path_files]
-df = pd.concat(df, sort=False)
-df = df.rename(str.lower, axis='columns')
-
-mfev = df.loc[df['month'] == 2]
-mmar = df.loc[df['month'] == 3]
-maug = df.loc[df['month'] == 8]
-msep = df.loc[df['month'] == 9]
-moct = df.loc[df['month'] == 10]
 
 def _extractdf(df):
     ans = {}
@@ -49,6 +37,8 @@ def _extractdf(df):
 
 def extractdf(df):
     ans = {}
+    ans['lat'], ans['lon'] = [], []
+
     for i, row in df.iterrows():
         month, day = row.month, row.day
         hour, minute = row.hour, row.minute
@@ -61,6 +51,9 @@ def extractdf(df):
                 ans[hour]['sensor1'] = 0
 
             ans[hour]['sensor1'] += 1
+            ans['lat'].append(lat)
+            ans['lon'].append(lon)
+            # print(day)
         if row.yyyyyyy_xx3 > 0: #sensor 1 detect
             if not ans.get(hour):
                 ans[hour] = {}
@@ -68,6 +61,9 @@ def extractdf(df):
                 ans[hour]['sensor2'] = 0
 
             ans[hour]['sensor2'] += 1
+            ans['lat'].append(lat)
+            ans['lon'].append(lon)
+            # print(day)
         if row.yyy_xx4 > 0 or row.yyy_xx5: #sensor 1 detect
             if not ans.get(hour):
                 ans[hour] = {}
@@ -75,7 +71,9 @@ def extractdf(df):
                 ans[hour]['sensor3'] = 0
 
             ans[hour]['sensor3'] += 1
-    
+            ans['lat'].append(lat)
+            ans['lon'].append(lon)
+            # print(day)
     return ans
     
 def plot(data):
@@ -107,13 +105,30 @@ def plot(data):
     
     axs[ii, jj].set_visible(False)
 
-    plt.savefig('../assets/lightnigbyhour.png', dpi=300)
+    # plt.savefig('../assets/lightnigbyhour.png', dpi=300)
+    plt.show()
+
+if __name__ == "__main__":
+
+    PATH = '../../data/lite/mat'
+    path_files = [os.path.join(PATH, path) for path in os.listdir(PATH)]
+
+    df = [pd.read_csv(file, sep='\s+') for file in path_files]
+    df = pd.concat(df, sort=False)
+    df = df.rename(str.lower, axis='columns')
+
+    mfev = df.loc[df['month'] == 2]
+    mmar = df.loc[df['month'] == 3]
+    maug = df.loc[df['month'] == 8]
+    msep = df.loc[df['month'] == 9]
+    moct = df.loc[df['month'] == 10]
 
 
 
-data = extractdf(msep)
-plot(data)
+    data = extractdf(msep)
+    print(msep.lat[0], msep.lon[0])
+    plot(data)
 
-print(len(data.keys()))
+    print(len(data.keys()))
 
 
