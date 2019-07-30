@@ -1,7 +1,7 @@
 title: "Projeto da Disciplina CAP394 - Introduction to Data Science"
 description: "Este é o projeto é rascunho do virá a ser o projeto da disciplina CAP394"
 branch: master
-main: ./src/data_description.ipynb
+main: src/data_description.ipynb
 tags:
   - datascience
   - eda
