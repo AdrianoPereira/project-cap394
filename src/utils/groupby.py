@@ -74,7 +74,7 @@ def extractdf(df):
             ans['lat'].append(lat)
             ans['lon'].append(lon)
             # print(day)
-    return ans
+    return ansextractdf
     
 def plot(data):
     print('plots: ', (data.keys()))
