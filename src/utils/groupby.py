@@ -1,8 +1,8 @@
-import pandas as pd
-import numpy as np
-import os
-import matplotlib.pyplot as plt
-import math
+    import pandas as pd
+    import numpy as np
+    import os
+    import matplotlib.pyplot as plt
+    import math
 
 
 def _extractdf(df):
@@ -73,8 +73,8 @@ def extractdf(df):
             ans[hour]['sensor3'] += 1
             ans['lat'].append(lat)
             ans['lon'].append(lon)
-            # print(day)
-    return ansextractdf
+
+    return ans
     
 def plot(data):
     print('plots: ', (data.keys()))
