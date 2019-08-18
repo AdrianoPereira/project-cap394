@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import time
+from mpl_toolkits.basemap import Basemap
+import matplotlib.gridspec as gridspec
 
 def plot_precipitation(df, title=''):
     # define marker style
@@ -112,6 +114,47 @@ def plot_year_precipitation(df):
     plt.savefig('months.png')
     plt.show()
 
+def plot_daily_precipitation(df):
+    days = list(df.groupby('day').groups.keys())
+    plt.figure(figsize=(17, 8), dpi=100)
+    for day in days:
+        print('check day ', day)
+        data = df[df['day'] == day]
+        data = data.groupby(['hour']).agg({'precipit': ['sum']})
+        x = list(map(int, data.index.ravel()))
+        y = list(map(float, data['precipit']['sum'].values))
+        plt.plot(x, y, label='Dia %d'%int(day))
+        # print(y)
+
+    plt.grid()
+    plt.xlabel('Hora')
+    plt.ylabel('Total de precipitaćão (mm/d)')
+    plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+    # plt.savefig('day.png')
+    plt.show()
+
+def plot_daily_lightning(df):
+    days = list(df.groupby('day').groups.keys())
+    plt.figure(figsize=(17, 8), dpi=100)
+    for day in days:
+        print('check day ', day)
+        data = df[df['day'] == day]
+        data = data.groupby(['hour']).agg({'yyy_xx4': ['sum']})
+        x = list(map(int, data.index.ravel()))
+        y = list(map(float, data['yyy_xx4']['sum'].values))
+        plt.plot(x, y, label='Dia %d' % int(day))
+        # print(y)
+
+    plt.grid()
+    plt.xlabel('Hora')
+    plt.ylabel('Total de precipitaćão (mm/d)')
+    plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+    # plt.savefig('day.png')
+    plt.show()
+
+def detail(df):
+
+
 
 if __name__ == "__main__":
     try:
@@ -121,9 +164,10 @@ if __name__ == "__main__":
 
     MAT_PATH = "../data/full/exp/mat"
 
-    df = pd.read_csv('../data/full/exp/csv/total.csv', sep=',')
+    df = pd.read_csv('../data/full/exp/csv/september.csv', sep=',')
 
-    plot_year_precipitation(df)
+    plot_daily_lightning(df)
+    # plot_year_precipitation(df)
     # plot_precipitation(df, title='Total de precipitação no meses observados em 2014')
 
 
