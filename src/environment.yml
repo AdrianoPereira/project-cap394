@@ -1,9 +1,16 @@
-name: project-cap394
+name: lightning
 channels:
   - conda-forge
-depenencies:
+  - plotly
+dependencies:
   - numpy
   - pandas
   - matplotlib
+  - plotly=4.1.0
   - jupyter
+  - rasterio
+  - scikit-learn
   - arm_pyart
+  - pip:
+    - cufflinks
+    - "notebook>=5.3" "ipywidgets==7.5"
