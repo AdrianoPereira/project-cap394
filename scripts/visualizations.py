@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import time
 from mpl_toolkits.basemap import Basemap
+import matplotlib as mpl
 import matplotlib.gridspec as gridspec
 
 def plot_precipitation(df, title=''):
@@ -153,6 +154,70 @@ def plot_daily_lightning(df):
     plt.show()
 
 def detail(df):
+    my_coords = [-3.2, -60.00000000]
+    zoom_scale = 2
+    font = {
+        'fontweight': 'bold'
+    }
+
+    bbox = [my_coords[0] - zoom_scale, my_coords[0] + zoom_scale, \
+            my_coords[1] - zoom_scale, my_coords[1] + zoom_scale]
+
+    fig = plt.figure(figsize=(20, 8))
+    m = Basemap(projection='merc', llcrnrlat=bbox[0], urcrnrlat=bbox[1], \
+                llcrnrlon=bbox[2], urcrnrlon=bbox[3], lat_ts=10, resolution='i')
+
+    m.drawcoastlines()
+    m.fillcontinents(color='#FAFAFA', lake_color='dodgerblue')
+
+    m.drawparallels(np.arange(bbox[0], bbox[1], (bbox[1] - bbox[0]) / 5), labels=[1, 0, 0, 0])
+    m.drawmeridians(np.arange(bbox[2], bbox[3], (bbox[3] - bbox[2]) / 5), labels=[0, 0, 0, 1], rotation=45)
+    m.drawmapboundary(fill_color='dodgerblue')
+
+    x, y = m(my_coords[1], my_coords[0])
+    plt.title("Raios no mês Setembro", fontdict=font)
+    # plt.ylabel('Longitude', labelpad=40)
+    # plt.xlabel('Latitude', labelpad=60)
+
+    lights = df[(df['yyy_xx4'] > 0) & (df['yyy_xx5'] > 0)]
+    land = np.zeros((241, 241))
+
+    for line in lights[['ind_x', 'ind_y', 'yyy_xx4', 'yyy_xx4']].values:
+        # coords = (line[0], line[1])
+        x, y = m(line[0], line[1])
+
+        if line[2] + line[3] > 0:
+            land[0][1] += 1
+        # if line[2] + line[3] < 3:
+        #     m.plot(x, y, marker='x', color='gray')
+        # elif line[2] + line[3] < 5:
+        #     m.plot(x, y, marker='x', color='blue')
+        # elif line[2] + line[3] < 7:
+        #     m.plot(x, y, marker='x', color='green')
+        # elif line[2] + line[3] < 10:
+        #     m.plot(x, y, marker='x', color='orange')
+        # else:
+        #     m.plot(x, y, marker='x', color='red')
+
+        # m.plot(x, y, marker='s', color='b', alpha=0.2)
+    m.matshow(land, alpha=.3)
+    # cmap = mpl.colors.ListedColormap(['black', 'gray',
+    #                                   'yellow', 'orange', 'red'])
+    # cmap.set_over('red')
+    # cmap.set_under('black')
+    # bounds = [1, 3, 5, 10, 20]
+    # norm = mpl.colors.BoundaryNorm(bounds, cmap.N)
+    # cb3 = mpl.colorbar.ColorbarBase(fig, cmap=cmap,
+    #                                 norm=norm,
+    #                                 boundaries=[-10] + bounds + [10],
+    #                                 extend='both',
+    #                                 extendfrac='auto',
+    #                                 ticks=bounds,
+    #                                 spacing='uniform',
+    #                                 orientation='vertical')
+    # cb3.set_label('Custom extension lengths, some other units')
+    plt.savefig('land.png')
+    plt.show()
 
 
 
@@ -166,7 +231,7 @@ if __name__ == "__main__":
 
     df = pd.read_csv('../data/full/exp/csv/september.csv', sep=',')
 
-    plot_daily_lightning(df)
+    detail(df)
     # plot_year_precipitation(df)
     # plot_precipitation(df, title='Total de precipitação no meses observados em 2014')
 
