@@ -231,7 +231,7 @@ if __name__ == "__main__":
 
     df = pd.read_csv('../data/full/exp/csv/september.csv', sep=',')
 
-    detail(df)
+    plot_daily_lightning(df)
     # plot_year_precipitation(df)
     # plot_precipitation(df, title='Total de precipitação no meses observados em 2014')
 
