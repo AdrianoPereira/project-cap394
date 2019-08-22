@@ -4,6 +4,27 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+def load_datasets_fam(filenames):
+    """Read one or more files as dataframe.
+    filenames list: filenames
+    """
+    filenames = [os.path.join(PATH, filename) for filename in filenames]
+    filenames = sorted(filenames)
+    df = []
+    for file in filenames:
+        month, day, hour, minute = file[-12:-10], file[-10:-8], \
+                                   file[-8:-6], file[-6:-4]
+        temp = pd.read_csv(file, sep='\s+')
+        temp['month'], temp['day'], temp['hour'], temp['minute'] = month, \
+                                                                   day, hour, minute
+
+        df.append(temp)
+
+    df = pd.concat(df, sort=False)
+    df = df.rename(str.lower, axis='columns')
+
+    return df
+
 def load_datasets(dir):
     """Read one or more files as dataframe.
     dir: files directory

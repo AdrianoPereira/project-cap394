@@ -219,7 +219,16 @@ def detail(df):
     plt.savefig('land.png')
     plt.show()
 
+def plot_mat(df):
+    mat = np.zeros((241, 241))
 
+    for i, row in df.iterrows():
+        x, y = int(row['ind_x']), int(row['ind_y'])
+        mat[x][y] += row['precipit']
+
+    plt.imshow(mat)
+
+    plt.show()
 
 if __name__ == "__main__":
     try:
@@ -229,9 +238,9 @@ if __name__ == "__main__":
 
     MAT_PATH = "../data/full/exp/mat"
 
-    df = pd.read_csv('../data/full/exp/csv/september.csv', sep=',')
+    df = pd.read_csv('../data/full/exp/csv/february.csv', sep=',')
 
-    plot_daily_lightning(df)
+    plot_mat(df)
     # plot_year_precipitation(df)
     # plot_precipitation(df, title='Total de precipitação no meses observados em 2014')
 
