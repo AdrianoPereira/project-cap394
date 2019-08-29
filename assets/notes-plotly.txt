@@ -1,0 +1,19 @@
+Múltiplos objetos em gráfico: https://plot.ly/python/box-plots/
+use: 
+	import plotly.graph_objects as go
+Ex:
+	fig = go.Figure()
+	fig.add_trace(go.Box([1, 2, 3]))
+	fig.show()
+
+Alter color:
+	atribute marker_color inside add_trace
+
+fig.update_layout(
+	template='plotly_dark',
+	yaxis=go.layout.YAxis(
+        title=go.layout.yaxis.Title(
+            text="Máxima refletividade (dBZ)"
+        )
+    )
+)
