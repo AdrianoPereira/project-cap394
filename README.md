@@ -5,9 +5,18 @@ This repository contains the project developed in the Introduction to Data Scien
 
 ## Table of Contents
 - [**Notebooks**](https://github.com/AdrianoPereira/project-cap394/tree/master/notebooks)
-  - [ ] [Dataset description](#)
+  - [ ] Dataset description
   - [x] [Preprocessing](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/Preprocessing.ipynb)
-
+  - **Exploratory data analysis**
+    - [x] [EDA matrix files](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/ExploratoryDataAnalysisMat.ipynb)
+    - [x] [EDA family files](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/ExploratoryDataAnalysisFam.ipynb)
+  - **Machine learning**
+    - Decision tree
+    - Random foreset
+    - Support vector machines
+    - Multilayer perceptron
+    - Ensemble Vote
+  - **Results**
 
 ## Getting started
 [Draft Project 📕](https://github.com/AdrianoPereira/project-cap394/blob/master/src/project.ipynb)
