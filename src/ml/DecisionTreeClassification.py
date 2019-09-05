@@ -88,6 +88,7 @@ def plot(data):
     plt.savefig('cross_validadtion.png', dpi=300)
     plt.show()
 
+
 def save_model(model, name):
     print('Saving model...')
 
