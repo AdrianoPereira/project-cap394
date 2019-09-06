@@ -10,14 +10,16 @@
   - [3.1 Instalação](#pandas-installation)
 - [4. Jupyter notebook](#jupyter)
   - [4.1 Instalação](#jupyter-installation)
-- [4. Matplotlib](#matplotlib)
-  - [4.1 Instalação](#matplotlib-installation)
-- [4. Basemap](#basemap)
-  - [4.1 Instalação](#basemap-installation)
-- [4. Plotly](#plotly)
-  - [4.1 Instalação](#plotly-installation)
-- [4. Scikit-learn](#scikit)
-  - [4.1 Instalação](#scikit-installation)
+- [5. Matplotlib](#matplotlib)
+  - [5.1 Instalação](#matplotlib-installation)
+- [6. Raster IO](#rasterio)
+  - [6.1 Instalação](#rasterio-installation)
+- [7. Basemap](#basemap)
+  - [7.1 Instalação](#basemap-installation)
+- [8. Plotly](#plotly)
+  - [8.1 Instalação](#plotly-installation)
+- [9. Scikit-learn](#scikit)
+  - [9.1 Instalação](#scikit-installation)
 
 *By: Adriano P. Almeida*
 
@@ -139,6 +141,32 @@ A versão do Matplotlib utilizada neste trabalho foi `3.11`. Para mais informaç
 
 - Site oficial: [https://matplotlib.org](https://matplotlib.org/)
 - Repositório github: [https://github.com/matplotlib/matplotlib](https://github.com/matplotlib/matplotlib/)
+
+
+<a id="rasterio"></a>
+## 4. Raster IO [⬆](#index)
+
+---
+
+Raster IO é uma biblioteca que permite trabalhar com dados geográficos matriciais no Python.
+
+<a id="rasterio-installation"></a>
+### 4.1 Instalação [⬆](#index)
+
+---
+
+O pacote Raser IO pode ser instalado via [conda](https://docs.conda.io/en/latest/):
+```console
+conda install -c conda-forge rasterio
+```
+Ou via [pip](https://pip.pypa.io/en/stable/)
+```console
+pip install rasterio
+```
+A versão do Raster IO utilizada neste trabalho foi `1.0.26`. Para mais informações visite o repositório do github onde o código fonte está hoespedado, ou seu site oficial:
+
+- Site oficial: [https://rasterio.readthedocs.io/en/stable/index.html](https://rasterio.readthedocs.io/en/stable/index.html)
+- Repositório github: [https://github.com/mapbox/rasterio](https://github.com/mapbox/rasterio)
 
 <a id="basemap"></a>
 ## 4. Basemap [⬆](#index)
