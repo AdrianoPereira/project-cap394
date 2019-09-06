@@ -5,8 +5,8 @@ This repository contains the project developed in the Introduction to Data Scien
 
 ## Table of Contents
 - **Environment setting**
-  - [Dependencies and installations](#)
-- [**Notebooks**](https://github.com/AdrianoPereira/project-cap394/tree/master/docs/dependencies-and-installations.md)
+  - [Dependencies and installations](https://github.com/AdrianoPereira/project-cap394/tree/master/docs/dependencies-and-installations.md)
+- [**Notebooks**](https://github.com/AdrianoPereira/project-cap394/tree/master/docs/notebooks)
   - [ ] Dataset description
   - [x] [Preprocessing](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/Preprocessing.ipynb)
   - **Exploratory data analysis**

@@ -3,13 +3,13 @@
 <a id="index"></a>
 ## Index
 - [Index](#index)
-- [1. Visão geral ⬆](#1-vis%c3%a3o-geral-%e2%ac%86)
-- [2. Numpy ⬆](#2-numpy-%e2%ac%86)
-  - [2.1 Instalação ⬆](#21-instala%c3%a7%c3%a3o-%e2%ac%86)
-- [3. Pandas ⬆](#3-pandas-%e2%ac%86)
-  - [3.1 Instalação ⬆](#31-instala%c3%a7%c3%a3o-%e2%ac%86)
-- [4. Jupyter notebook ⬆](#4-jupyter-notebook-%e2%ac%86)
-  - [4.1 Instalação ⬆](#41-instala%c3%a7%c3%a3o-%e2%ac%86)
+- [1. Visão geral](#overview)
+- [2. Numpy](#numpy)
+  - [2.1 Instalação](#numpy-installation)
+- [3. Pandas](#pandas)
+  - [3.1 Instalação](#pandas-installation)
+- [4. Jupyter notebook](#jupyter-installation)
+  - [4.1 Instalação](#jupyter-installation)
 
 <a id="overview"></a>
 ## 1. Visão geral [⬆](#index)
