@@ -27,21 +27,18 @@
 <a id="overview"></a>
 ## 1. Visão geral [⬆](#index)
 
----
 
 Este documento tem como objetivo fundamental expor as principais dependências utilizadas no trabalho, bem como os passos essenciais para a instalação, com isso, facilitando na reprodutibilidade do projeto por outras pessoas.
 
 <a id="numpy"></a>
 ## 2. Numpy [⬆](#index)
 
----
 
 Numpy é uma biblioteca para a linguagem de programação Python utilizada principalmente no processamento de dados tabulados em estruturas de uma ou mais dimensões. Além de sua robustez na manipulação de conjunto de dados massivos, a biblioteca Numpy possui uma vasta coleção de funções matemáticas.
 
 <a id="numpy-installation"></a>
 ### 2.1 Instalação [⬆](#index)
 
----
 
 Tradicionalmente instalação da biblioeteca Numpy pode ser feita  via [conda](https://docs.conda.io/en/latest/) ou [pip](https://pip.pypa.io/en/stable/).
 
@@ -62,14 +59,12 @@ A versão do numpy utilizada neste trabalho foi `1.15`. Para mais informações 
 <a id="pandas"></a>
 ## 3. Pandas [⬆](#index)
 
----
 
 Pandas é uma robusta biblioteca para manipulação e análise de dados desenvolvida para a linguagem de programação Python. Escrito na linguagem *C*, o Pandas possui um alto desempenho no carregamento massivo de dados, e também na realização de operações complexas de forma simples e otimizada, tornando-a uma das bibliotecas mais populares bibliotecas na área de *DataScience*.
 
 <a id="pandas-installation"></a>
 ### 3.1 Instalação [⬆](#index)
 
----
 
 A instalação do Pandas pode ser feita de várias maneiras, dentre elas via [conda](https://docs.conda.io/en/latest/) ou [pip](https://pip.pypa.io/en/stable/).
 
@@ -90,14 +85,12 @@ A versão do pandas utilizada neste trabalho foi `0.25.1`. Para mais informaçõ
 <a id="jupyter"></a>
 ## 4. Jupyter notebook [⬆](#index)
 
----
 
 O Jupyter notebook é uma ambiente computacional web que permite a criação de documentos interativos. O Jupyter notebook é amplamente utilizada na área de *DataScience* graças à sua facilidade em executar códigos e receber o resultado diretamente no documento de forma imediata. Os documentos podem ser exporatos para vários formatos, incluindo `.tex`, `.html` e `.pdf`.
 
 <a id="jupyter-installation"></a>
 ### 4.1 Instalação [⬆](#index)
 
----
 
 A instalação do Jupyter notebook pode ser feita de várias maneiras, dentre elas via [conda](https://docs.conda.io/en/latest/) ou [pip](https://pip.pypa.io/en/stable/).
 
@@ -118,14 +111,12 @@ A versão do Jupyter notebook utilizada neste trabalho foi `3.1.0`. Para mais in
 <a id="matplotlib"></a>
 ## 4. Matplotlib [⬆](#index)
 
----
 
 Matplotlib é uma biblioteca Python para visualização de dados por meio de gráficos estáicos 2D ou 3d.
 
 <a id="matplotlib-installation"></a>
 ### 4.1 Instalação [⬆](#index)
 
----
 
 Algumas formas de instalalção da biblioeteca são através dos gerenciadores [conda](https://docs.conda.io/en/latest/) ou [pip](https://pip.pypa.io/en/stable/).
 
@@ -146,14 +137,12 @@ A versão do Matplotlib utilizada neste trabalho foi `3.11`. Para mais informaç
 <a id="rasterio"></a>
 ## 4. Raster IO [⬆](#index)
 
----
 
 Raster IO é uma biblioteca que permite trabalhar com dados geográficos matriciais no Python.
 
 <a id="rasterio-installation"></a>
 ### 4.1 Instalação [⬆](#index)
 
----
 
 O pacote Raser IO pode ser instalado via [conda](https://docs.conda.io/en/latest/):
 ```console
@@ -171,14 +160,12 @@ A versão do Raster IO utilizada neste trabalho foi `1.0.26`. Para mais informa�
 <a id="basemap"></a>
 ## 4. Basemap [⬆](#index)
 
----
 
 O Basemap é uma extensão do Matplotlib, que tem como principal funcionalidade a plotagem de mapas estáticos no Python.
 
 <a id="basemap-installation"></a>
 ### 4.1 Instalação [⬆](#index)
 
----
 
 O Matplotlib é uma dependência obrigatória para o pleno funcionamento do Basemap. Após certificar-se de que o Matplotlib está instalado, é necessário baixar o pacote do Basemap no seguinte link: [https://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/basemap-1.0.7](https://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/basemap-1.0.7/). O Basemap funciona com o auxílio da biblioteca [GEOS](https://trac.osgeo.org/geos/), sendo assim, após baixar e descompactar o pacote, deverá ser definiada a variável de ambiente para os binários do GEOS que se encontra dentro da pasta do Basemap, usando os seguintes comandos: 
 
@@ -202,14 +189,12 @@ A versão do Basemap utilizada neste trabalho foi `1.0.7`. Para mais informaçõ
 <a id="plotly"></a>
 ## 4. Plotly [⬆](#index)
 
----
 
 Plotly é uma biblioeteca para visualização e integração de gráficos, possuindo uma vasta e agradável gama de layouts. 
 
 <a id="plotly-installation"></a>
 ### 4.1 Instalação [⬆](#index)
 
----
 
 A instalação do Plotly pode ser feita via [conda](https://docs.conda.io/en/latest/):
 
@@ -229,14 +214,12 @@ A versão do Plotly utilizada neste trabalho foi `4.1.0`. Para mais informaçõe
 <a id="scikit"></a>
 ## 4. Scikit-learn [⬆](#index)
 
----
 
 A Scikit-learn é uma biblioteca com uma vasta gama de ferramentas para análise de dados. Diversos algoritmos de aprendizado de máquina estão inclusos no Scikit-learn.
 
 <a id="scikit-installation"></a>
 ### 4.1 Instalação [⬆](#index)
 
----
 
 A instalação do Scikit-learn pode ser feita via [conda](https://docs.conda.io/en/latest/):
 
