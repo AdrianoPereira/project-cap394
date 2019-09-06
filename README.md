@@ -8,11 +8,11 @@ This repository contains the project developed in the Introduction to Data Scien
   - [ ] Dataset description
   - [x] [Preprocessing](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/Preprocessing.ipynb)
   - **Exploratory data analysis**
-    - [x] EDA matrix files[📕](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/ExploratoryDataAnalysisMat.ipynb)
-    - [x] [EDA family files](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/ExploratoryDataAnalysisFam.ipynb)
+    - [x] [EDA matrix files](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/ExploratoryDataAnalysisMat.ipynb) - [Interactive notebook](https://kyso.io/AdrianoPereira/notebooks/file/ExploratoryDataAnalysisMat.ipynb#code=shown&files)
+    - [x] [EDA family files](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/ExploratoryDataAnalysisFam.ipynb) - [Interactive notebook](https://kyso.io/AdrianoPereira/notebooks/file/ExploratoryDataAnalysisFam.ipynb#code=shown&files)
   - **Machine learning**
-    - [Decision tree](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/DecisionTree.ipynb)
-    - [Random foreset](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/RandomForest.ipynb)
+    - [Decision tree](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/DecisionTree.ipynb) - [Interactive notebook](https://kyso.io/AdrianoPereira/notebooks/file/DecisionTree.ipynb#code=shown&files)
+    - [Random foreset](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/RandomForest.ipynb) - [Interactive notebook](https://kyso.io/AdrianoPereira/notebooks/file/RandomForest.ipynb#code=shown&files)
     - Support vector machines
     - Multilayer perceptron
     - Ensemble Vote
