@@ -11,6 +11,9 @@
 - [4. Jupyter notebook](#jupyter-installation)
   - [4.1 Instalação](#jupyter-installation)
 
+*By: Adriano P. Almeida*
+
+
 <a id="overview"></a>
 ## 1. Visão geral [⬆](#index)
 
