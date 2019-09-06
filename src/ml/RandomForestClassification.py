@@ -22,10 +22,7 @@ def rf_classifier(df, threshold=1, records=1000, test_size=.2):
         'strafrac', 'meanz', 'maxz', 'meanvil',
         'ttvil', 'meanprec', 'maxprec'
     ]
-    # columns = [
-    #     'ttyyyxx3', 'riverfrac', 'convfrac',
-    #     'strafrac', 'meanz', 'ttvil', 'meanprec'
-    # ]
+
 
     labels = []
     for i, row in df.iterrows():
