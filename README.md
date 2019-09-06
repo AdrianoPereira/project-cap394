@@ -15,7 +15,7 @@ This repository contains the project developed in the Introduction to Data Scien
   - **Machine learning**
     - [Decision tree](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/DecisionTree.ipynb) - [Interactive notebook](https://kyso.io/AdrianoPereira/notebooks/file/DecisionTree.ipynb#code=shown&files)
     - [Random foreset](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/RandomForest.ipynb) - [Interactive notebook](https://kyso.io/AdrianoPereira/notebooks/file/RandomForest.ipynb#code=shown&files)
-    - [Support vector machines](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/SupportVectorMachine.ipynb) - [Interactive notebook](https://kyso.io/AdrianoPereira/notebooks/file/SupportVectorMachine.ipynb#code=shown&files))
+    - [Support vector machines](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/SupportVectorMachine.ipynb) - [Interactive notebook](https://kyso.io/AdrianoPereira/notebooks/file/SupportVectorMachine.ipynb#code=shown&files)
 - **Results**
 
 ## Getting started
