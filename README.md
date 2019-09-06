@@ -1,4 +1,4 @@
-****<img src="https://raw.githubusercontent.com/AdrianoPereira/project-cap394/master/assets/images/header-en.png" />
+<img src="https://raw.githubusercontent.com/AdrianoPereira/project-cap394/master/assets/images/header-en.png" />
 
 ## Overview
 This repository contains the project developed in the Introduction to Data Science course (CAP394). Course taught by teachers [Dr. Gilberto Queiroz](http://www.dpi.inpe.br/~gribeiro/doku.php) and [Dr. Rafael Santos](http://www.lac.inpe.br/~rafael.santos), it's part of the Graduate Program in Applied Computing offered by the Brazilian National Institute for Space Research.
@@ -15,10 +15,8 @@ This repository contains the project developed in the Introduction to Data Scien
   - **Machine learning**
     - [Decision tree](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/DecisionTree.ipynb) - [Interactive notebook](https://kyso.io/AdrianoPereira/notebooks/file/DecisionTree.ipynb#code=shown&files)
     - [Random foreset](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/RandomForest.ipynb) - [Interactive notebook](https://kyso.io/AdrianoPereira/notebooks/file/RandomForest.ipynb#code=shown&files)
-    - Support vector machines
-    - Multilayer perceptron
-    - Ensemble Vote
-  - **Results**
+    - [Support vector machines](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/SupportVectorMachine.ipynb) - [Interactive notebook](https://kyso.io/AdrianoPereira/notebooks/file/SupportVectorMachine.ipynb#code=shown&files))
+- **Results**
 
 ## Getting started
 [Draft Project 📕](https://github.com/AdrianoPereira/project-cap394/blob/master/src/project.ipynb)
