@@ -8,8 +8,16 @@
   - [2.1 Instalação](#numpy-installation)
 - [3. Pandas](#pandas)
   - [3.1 Instalação](#pandas-installation)
-- [4. Jupyter notebook](#jupyter-installation)
+- [4. Jupyter notebook](#jupyter)
   - [4.1 Instalação](#jupyter-installation)
+- [4. Matplotlib](#matplotlib)
+  - [4.1 Instalação](#matplotlib-installation)
+- [4. Basemap](#basemap)
+  - [4.1 Instalação](#basemap-installation)
+- [4. Plotly](#plotly)
+  - [4.1 Instalação](#plotly-installation)
+- [4. Scikit-learn](#scikit)
+  - [4.1 Instalação](#scikit-installation)
 
 *By: Adriano P. Almeida*
 
@@ -103,3 +111,116 @@ A versão do Jupyter notebook utilizada neste trabalho foi `3.1.0`. Para mais in
 
 - Site oficial: [https://jupyter.org/](https://jupyter.org/)
 - Repositório github: [https://github.com/fcollonval/jupyter_conda](https://github.com/fcollonval/jupyter_conda)
+
+
+<a id="matplotlib"></a>
+## 4. Matplotlib [⬆](#index)
+
+---
+
+Matplotlib é uma biblioteca Python para visualização de dados por meio de gráficos estáicos 2D ou 3d.
+
+<a id="matplotlib-installation"></a>
+### 4.1 Instalação [⬆](#index)
+
+---
+
+Algumas formas de instalalção da biblioeteca são através dos gerenciadores [conda](https://docs.conda.io/en/latest/) ou [pip](https://pip.pypa.io/en/stable/).
+
+Instalação via conda.
+```console
+conda install -c conda-forge -y matplotlib
+```
+Instalação via pip.
+```console
+pip install matplotlib
+```
+A versão do Matplotlib utilizada neste trabalho foi `3.11`. Para mais informações visite o repositório do github onde o código fonte está hoespedado, ou seu site oficial:
+
+- Site oficial: [https://matplotlib.org](https://matplotlib.org/)
+- Repositório github: [https://github.com/matplotlib/matplotlib](https://github.com/matplotlib/matplotlib/)
+
+<a id="basemap"></a>
+## 4. Basemap [⬆](#index)
+
+---
+
+O Basemap é uma extensão do Matplotlib, que tem como principal funcionalidade a plotagem de mapas estáticos no Python.
+
+<a id="basemap-installation"></a>
+### 4.1 Instalação [⬆](#index)
+
+---
+
+O Matplotlib é uma dependência obrigatória para o pleno funcionamento do Basemap. Após certificar-se de que o Matplotlib está instalado, é necessário baixar o pacote do Basemap no seguinte link: [https://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/basemap-1.0.7](https://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/basemap-1.0.7/). O Basemap funciona com o auxílio da biblioteca [GEOS](https://trac.osgeo.org/geos/), sendo assim, após baixar e descompactar o pacote, deverá ser definiada a variável de ambiente para os binários do GEOS que se encontra dentro da pasta do Basemap, usando os seguintes comandos: 
+
+```console
+cd geos-3.3.3
+export GEOS_DIR = ~ /
+./configure --prefix = $ GEOS_DIR
+make
+make install
+```
+E então, após a instalação e configuração do GEOS, finalmente a instalação do Basemap com o seguinte comando na diretório raiz do pacote:
+
+```console
+python setup.py install
+```
+A versão do Basemap utilizada neste trabalho foi `1.0.7`. Para mais informações visite o repositório do github onde o código fonte está hoespedado, ou seu site oficial:
+
+- Site oficial: [https://basemaptutorial.readthedocs.io/en/latest](https://basemaptutorial.readthedocs.io/en/latest/)
+- Repositório github: [https://github.com/rveciana/BasemapTutorial](https://github.com/rveciana/BasemapTutorial)
+
+<a id="plotly"></a>
+## 4. Plotly [⬆](#index)
+
+---
+
+Plotly é uma biblioeteca para visualização e integração de gráficos, possuindo uma vasta e agradável gama de layouts. 
+
+<a id="plotly-installation"></a>
+### 4.1 Instalação [⬆](#index)
+
+---
+
+A instalação do Plotly pode ser feita via [conda](https://docs.conda.io/en/latest/):
+
+```console
+conda install -c plotly plotly
+```
+
+Ou via [pip](https://pip.pypa.io/en/stable/):
+```console
+pip install plotly
+```
+A versão do Plotly utilizada neste trabalho foi `4.1.0`. Para mais informações visite o repositório do github onde o código fonte está hoespedado, ou seu site oficial:
+
+- Site oficial: [https://plot.ly/python/getting-started](https://plot.ly/python/getting-started/)
+- Repositório github: [https://github.com/plotly/plotly.py](https://github.com/plotly/plotly.py)
+
+<a id="scikit"></a>
+## 4. Scikit-learn [⬆](#index)
+
+---
+
+A Scikit-learn é uma biblioteca com uma vasta gama de ferramentas para análise de dados. Diversos algoritmos de aprendizado de máquina estão inclusos no Scikit-learn.
+
+<a id="scikit-installation"></a>
+### 4.1 Instalação [⬆](#index)
+
+---
+
+A instalação do Scikit-learn pode ser feita via [conda](https://docs.conda.io/en/latest/):
+
+```console
+conda install -c anaconda scikit-learn
+```
+
+Ou via [pip](https://pip.pypa.io/en/stable/):
+```console
+pip install scikit-learn
+```
+A versão do Scikit-learn utilizada neste trabalho foi `0.19.1`. Para mais informações visite o repositório do github onde o código fonte está hoespedado, ou seu site oficial:
+
+- Site oficial: [https://scikit-learn.org/stable](https://scikit-learn.org/stable/)
+- Repositório github: [https://github.com/scikit-learn/scikit-learn](https://github.com/scikit-learn/scikit-learn)
