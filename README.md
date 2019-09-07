@@ -7,7 +7,6 @@ This repository contains the project developed in the Introduction to Data Scien
 - **Environment setting**
   - [Dependencies and installations](https://github.com/AdrianoPereira/project-cap394/tree/master/docs/dependencies-and-installations.md)
 - [**Notebooks**](https://github.com/AdrianoPereira/project-cap394/tree/master/docs/notebooks)
-  - [ ] Dataset description
   - [x] [Preprocessing](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/Preprocessing.ipynb)
   - **Exploratory data analysis**
     - [x] [EDA matrix files](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/ExploratoryDataAnalysisMat.ipynb) - [Interactive notebook](https://kyso.io/AdrianoPereira/notebooks/file/ExploratoryDataAnalysisMat.ipynb#code=shown&files)
@@ -20,4 +19,4 @@ This repository contains the project developed in the Introduction to Data Scien
 - **Results**
 
 ## Getting started
-[Draft Project 📕](https://github.com/AdrianoPereira/project-cap394/blob/master/src/project.ipynb)
+[Draft Project 📕](https://github.com/AdrianoPereira/project-cap394/blob/master/notebooks/Presentation.ipynb)
