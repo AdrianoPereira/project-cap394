@@ -1,21 +1,24 @@
-### Perguntas sobre os dados
----
+Este projeto faz parte do trabalho final da disciplina **CAP-394 - Introdução à *DataScience*** que é oferecida no programa de pós graduação em computação aplicada do Instituto Nacional de Pesquisas Espaciais (INPE) e ministradas pelos professores [Dr. Rafael Santos](http://www.lac.inpe.br/~rafael.santos/) e [Dr. Gilberto Queiroz](http://www.dpi.inpe.br/~gribeiro/doku.php). O trabalho tem como principal objetivo analizar dados meteorológicos relacionados à descargas elétricas atmosfércas, e assim responder as tentar responder as seguintes questões: 
 
-* [x] 1. Identicar e eliminar variáveis desnecessárias.
-* [x] 2. Identicar as variáveis que possuem forte correlação.
-* [x] 3. As variáveis com maior correlação possuem relação influenciam na itensidade de raios?
-* [x] 4. Baseado nos índices disponíveis, identifique o mês em teve maior taxa de severidade. 
-* [x] 5. Em qual mês teve a maior incidência de descargas elétricas?
-* [x] 6. O mês com maior taxa de severidade foi também o mês com maior incidência de descargas elétricas?
-* [x] 7. Identificar no mês com maior severidade, os dias que tiveram maior taxa de severidade.
-* [x] 8. Criar série temporal afim de analisar o comportamento da severidade.
-* [x] 9. Bseado nos índices, identicar nuvens com maior severidade.
-* [x] 10. Qual a classificação de solo da área de estudo?
-* [x] 11. Analisar correlação da severidades das tempestades e cobertura do solo.
-* [x] 12. Em qual cobertura de solo ocorreram os maiores indíces de descargas elétricas?
-* [ ] 13. É possivel aplicar algum algoritmo de aprendizado de máquina afim de identificacar tempestades e classificar a sua severidade?
-* [ ] 14. É possível aplicar algum algoritmo de aprendizado de máquina afim de identificar situção favoráveis a ocorrência de descargas elétricas no solo?
-* [ ] 15. É concebível aplicar um algoritmo de aprendizado de máquina a fim de realizar a previsão de uma possível ocorrência de descargas elétricas?
+* [x] 1 - Através da análise de atributos, é possível identificar prováveis tempestades?
 
+* [x] 2 - Quais os dias que apresentaram maiores índices de severidades?
 
-> **Nota**: A motivação em utilizar técnicas de aprendizado de máquina supervisionado é para que haja melhor assimilação dos ídices e das caracterísitcas microfisicas presentes nas tempestades.
+* [x] 3 - É possível serem identificadas correlações entre a ocorrência de descargas elétricas e altos índices de 
+severidade em tempestades?
+
+* [x] 4 - Quais os atributos meteorológicos que mais influênciaram na ocorrências de descargas elétricas?
+
+* [x] 5 - Quais os atributos podem ser omitidos totalmente neste trabalho?
+
+* [x] 6 - Caso existam correlações entre atributos meteorológicos e ocorrência de raios, quais os limiares aproximados que podem ser definidos?
+
+* [x] 7 - Qual a classificação de cobertura do solo da área de estudo?
+
+* [x] 8 - Qual a infuência da cobertura de solo na ocorrência de raios?
+
+* [x] 9 - Em qual tipo de solo, foram registados as maiores taxas de incidências de raios?
+
+* [x] 10 - É possível aplicar alguma abordagem computacional para separar dados que possuem detecções de descargas elétricas dos dados que não possuem?
+
+* [x] 11 - É possível aplicar alguma abordagem computacional que faça a previsão de descargas elétricas?
