@@ -1,0 +1,5 @@
+book_filename: "cap-394-book"
+repo: https://github.com/AdrianoPereira/project-cap394
+output_dir: "_book"
+new_session: yes
+delete_merged_file: true

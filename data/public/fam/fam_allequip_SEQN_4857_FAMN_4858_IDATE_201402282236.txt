@@ -1,0 +1,3 @@
+        Time    SYSclass         Lat         Lon         Dir         Vel        Size    Ttyyyxx1    Ttyyyxx2    Ttyyyxx3    Ttyyyxx4    Ttyyyxx5   RiverFrac    ConvFrac    StraFrac       MeanZ        MaxZ     MeanVIL       TtVIL    MeanPrec     MaxPrec
+        0.00        2.00       -2.81      -60.69      314.00       31.40       26.00        0.00        0.00        0.00        0.00        0.00      100.00      100.00        0.00       23.01       25.83        0.48       12.60        1.79        2.76
+        0.20        1.00       -2.77      -60.71      333.00       24.80       20.00        0.00        0.00        0.00        0.00        0.00      100.00      100.00        0.00       23.67       27.09        0.44        8.80        2.01        3.54

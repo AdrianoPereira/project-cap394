@@ -1,0 +1,10 @@
+title: "Projeto da Disciplina CAP394 - Introduction to Data Science"
+description: "Este é o projeto é rascunho do virá a ser o projeto da disciplina CAP394"
+branch: master
+main: notebooks/README.md
+posts:
+  - notebooks
+tags:
+  - datascience
+  - eda
+  - lightning
