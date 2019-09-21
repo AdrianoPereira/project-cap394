@@ -30,6 +30,7 @@ references:
 Neste seção, serão descritas as etapas metodológicas utilizadas no 
 desenvolvimento deste trabalho.
 
+
 ## Contextualização da área de estudo
 
 Para este trabalho foram utilizados os dados do radar meteorológico SIPAM 
@@ -62,3 +63,56 @@ consequentemente maiores incidências de descargas elétricas
 <img src="images/landcoverhorizontal.png" alt="Área de estudo e sua cobertura do solo."  />
 <p class="caption">(\#fig:landcover)Área de estudo e sua cobertura do solo.</p>
 </div>
+
+
+## Análise exploratória dos dados
+
+Do ponto de vista físico, os sistemas precipitantes são classificados em 
+estratiformes ou convectivos \cite{damian2011duas}. Essa classificação é baseada 
+no trabalho de [@steiner1995climatological], que faz uso principalmente dos 
+índices de refletividade obtidos por meio de radar. Enquanto nos sistemas 
+estratiformes as chuvas acontecem de forma moderada e com distribuição uniforme, 
+nos sistemas convectivos, elas acontecem de forma mais intensa e concentrada, 
+caracterizando o tempo severo. As descargas atmosféricas são fenômenos que 
+acontecem principalmente nos sistemas convectivos. 
+
+
+```python
+import plotly
+import plotly.graph_objs as go
+fig = {'data':[go.Scatter(x=[1,2,3,4],y=[1,4,9,16])],
+       'layout':go.Layout(title='Plot generated in python')}
+```
+
+---
+
+
+```python
+plotly.offline.iplot(fig)
+```
+
+# Json export
+
+As an alternative, we export the python figure to json
+
+
+```python
+import json
+fig_as_json = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+```
+
+---
+
+Display plot as a plotly widget from R
+
+and display the figure in R
+
+
+```r
+plotly::as_widget(
+  jsonlite::fromJSON(
+    reticulate::py$fig_as_json, simplifyVector=FALSE))
+```
+
+<!--html_preserve--><div id="htmlwidget-0e6a1d90064a1294e0c8" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0e6a1d90064a1294e0c8">{"x":{"data":[{"x":[1,2,3,4],"y":[1,4,9,16],"type":"scatter","xaxis":"x","yaxis":"y","frame":null}],"layout":{"title":{"text":"Plot generated in python"},"xaxis":{"domain":[0,1],"automargin":true},"yaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":false},"attrs":[],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->

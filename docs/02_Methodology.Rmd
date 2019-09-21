@@ -30,6 +30,7 @@ references:
 Neste seção, serão descritas as etapas metodológicas utilizadas no 
 desenvolvimento deste trabalho.
 
+
 ## Contextualização da área de estudo
 
 Para este trabalho foram utilizados os dados do radar meteorológico SIPAM 
@@ -60,4 +61,50 @@ consequentemente maiores incidências de descargas elétricas
 
 ```{r landcover, fig.cap="Área de estudo e sua cobertura do solo.", echo = FALSE}
 knitr::include_graphics('images/landcoverhorizontal.png', dpi = NA)
+```
+
+
+## Análise exploratória dos dados
+
+Do ponto de vista físico, os sistemas precipitantes são classificados em 
+estratiformes ou convectivos \cite{damian2011duas}. Essa classificação é baseada 
+no trabalho de [@steiner1995climatological], que faz uso principalmente dos 
+índices de refletividade obtidos por meio de radar. Enquanto nos sistemas 
+estratiformes as chuvas acontecem de forma moderada e com distribuição uniforme, 
+nos sistemas convectivos, elas acontecem de forma mais intensa e concentrada, 
+caracterizando o tempo severo. As descargas atmosféricas são fenômenos que 
+acontecem principalmente nos sistemas convectivos. 
+
+```{python generate_plotly_figure_in_python}
+import plotly
+import plotly.graph_objs as go
+fig = {'data':[go.Scatter(x=[1,2,3,4],y=[1,4,9,16])],
+       'layout':go.Layout(title='Plot generated in python')}
+```
+
+---
+
+```{python display_plot_from_python}
+plotly.offline.iplot(fig)
+```
+
+# Json export
+
+As an alternative, we export the python figure to json
+
+```{python export_plot_to_json}
+import json
+fig_as_json = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+```
+
+---
+
+Display plot as a plotly widget from R
+
+and display the figure in R
+
+```{r display_plot_from_R}
+plotly::as_widget(
+  jsonlite::fromJSON(
+    reticulate::py$fig_as_json, simplifyVector=FALSE))
 ```
