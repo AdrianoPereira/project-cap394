@@ -39,3 +39,39 @@ if [ $1 = deploy ]; then
     firebase deploy
 fi
 
+helpmenu() {
+    echo "Usage: sh build.sh [OPTION]"
+    echo "Script to compile and/or deploy bookdown "
+    echo "\n"
+    echo "Arguments."
+    echo "   -h, --help \t\t flag to show help of script"
+}
+
+deployfirebase() {
+    firebase deploy
+}
+while [ ! $# -eq 0 ]
+do 
+    case "$1" in 
+        --help | -h)
+            helpmenu
+            exit
+            ;;
+        --deploy | -d)
+            if [ ! -z $2 ]; then
+                if [ $2 = firebase ]; then
+                    echo "Deploy to firebase..."
+                    deployfirebase      
+                else
+                    echo "Invalid option!"
+                    echo "Pass one of the following arguments: \nfirebase"
+                fi
+            else
+                echo "The deploy option is required!"
+                echo "Pass one of the following arguments: \nfirebase"
+            fi
+			exit
+			;;
+    esac
+    shift
+done
