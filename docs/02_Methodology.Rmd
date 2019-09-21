@@ -65,6 +65,157 @@ knitr::include_graphics('images/landcoverhorizontal.png', dpi = NA)
 
 
 ## Análise exploratória dos dados
+Nesta seção serão feitas as devidas importações e também a análise exploratíoria
+dos dados.
+
+
+### Carregando base de dados
+A célula abaixo faz a importação das bibliotecas que serão utilizadas na análise
+dos dados.
+
+```{python}
+#importação das bibliotecas que serão utilizadas
+import os
+import numpy as np
+import pandas as pd
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
+import plotly
+```
+
+Como o foco deste trabalho é trabalhar com os dados da rede de detecção LINET, 
+os dados carregados deverão ser filtrados, já que a rede esteve em funcionamento
+somente durante um certo período do experimento. Sendo assim, a célula abaixo 
+faz a importação e filtragem dos dados .
+```{python}
+#definindo arquivos para serem carregados
+files = ['august.csv', 'september.csv', 'october.csv'] 
+PATH ='../data/private/csv/fam/'
+
+#Carregando e concatenando base de dados
+df = [pd.read_csv(os.path.join(PATH, file)) 
+      for file in files]
+df = pd.concat(df, sort=False)
+print('Total de registros carregados: %s'%df['month'].count())
+
+#Filtrando base de dados
+query = '(month == 8 and day >= 27) or (month == 9) or (month == 10 and day <= 7)'
+df = df.query(query)
+print('Total de registros após a filtragem: %s'%df['month'].count())
+
+#Exibindo primeiras linhas da base de dados
+df.head()
+```
+
+O código da célula abaixo mostra uma descrição básica de alguns índices do 
+conjunto de dados.
+
+```{python}
+indexes = ['ttyyyxx3', 'riverfrac', 'convfrac', 'strafrac', 'meanz', 'maxz', 
+            'meanvil', 'ttvil', 'meanprec', 'maxprec']
+df[indexes].describe()
+```
+> **Nota**:  O atributo `ttyyyxx3` é referente a quantidade de raios detectados
+> pela rede LINET a cada 12 minutos.
+
+O código da célula abaixo tem como objetivo gerar um gráfico com a quantidade de
+registro em que foram detectados raios e quantidade de registros em que não 
+foram detectados raios.
+
+```{python results='hide', message=FALSE, warning=FALSE}
+#Separando registros com e sem detecções de raios
+no = df[df['ttyyyxx3'] < 1]
+yes = df[df['ttyyyxx3'] >= 1]
+
+#Contando quantidade de registros em cada subconjunto de dados
+tn = no['month'].count()
+ty = yes['month'].count()
+
+#Organizando dados de entrada para o gráfico
+labels = ['Sem raios detectados (%d)'%tn, 
+         'Com raios detectados (%d)'%ty]
+values= [tn, ty]
+
+#Criando gráfico
+fig = go.Figure()
+fig.add_trace(
+    go.Pie(labels=labels, values=values, hole=.5, 
+        marker=dict(colors=['#000000', '#D82D3B'], 
+                    line=dict(color='#A0A0A0', width=1)))
+)
+
+#Alterando layout do gráfico
+_ = fig.update_layout(
+    title='<b>Gráfico 1</b>: Quantidade de registros com e sem detecção de \
+    <br>descargas atmosféricas',
+    template='plotly_dark',
+    legend_orientation="v"
+)
+
+fig.show()
+```
+
+```{python echo=FALSE}
+import json
+pie_lightning = json.dumps( fig , cls=plotly.utils.PlotlyJSONEncoder)
+```
+
+```{r display_plot_from_R, echo=FALSE}
+plotly::as_widget(
+  jsonlite::fromJSON(
+    reticulate::py$pie_lightning, simplifyVector=FALSE))
+```
+
+Como mostrado no Gráfico 1, a quantidade de registros em que foram detectados 
+raios é muito menor do que a quantidade de registros em que não foi detectado
+nenhum raio. Nesse comjunto de dados, a quantidade de registros tende a diminuir
+conforme aumenta a quantidade de detecções, ou seja, registros com muitos raios
+detectados a cada 12 minutos, é muito menor que a quantidade de registros com
+poucos raios detectados. Essa relação pode ser observado no Gráfico 2.
+
+```{python results='hide', message=FALSE, warning=FALSE}
+#Contando a quantidade de registros em cada número de detecções
+group = df.groupby(['ttyyyxx3']).agg({'ttyyyxx3': 'count'})
+
+#Organizando dados de entrada para o gráfico
+labels = [int(x) for x in group.index][:100]
+values = group['ttyyyxx3'].values[:100]
+ranges = [
+    (1, 5), 
+    (5, 10), (10, 20), (20, 30), (30, 40), (40, 50)
+]
+
+#Criando estrutura do gráfico
+fig = go.Figure()
+for r in ranges:
+    labels = [int(x) for x in group.index][r[0]:r[1]]
+    values = group['ttyyyxx3'].values[r[0]:r[1]]
+
+    _ = fig.add_trace(
+        go.Bar(x=labels, y=values, name='%d a %d detecções de raios'%(r[0], 
+        r[1]))
+    )
+
+#Alterando layout do gráfico
+fig.update_yaxes(title_text='Quantidade de registros')
+fig.update_xaxes(title_text='Raios detectados a cada 12 minutos')
+fig.update_layout(template='plotly_dark', title='Frequência do \
+número de raios detectados a cada 12 minutos')
+
+# fig.show()
+```
+
+```{python echo=FALSE}
+import json
+counts_lightning = json.dumps( fig , cls=plotly.utils.PlotlyJSONEncoder)
+```
+
+```{r display_plot_from_R2, echo=FALSE}
+plotly::as_widget(
+  jsonlite::fromJSON(
+    reticulate::py$counts_lightning, simplifyVector=FALSE))
+```
+
 
 Do ponto de vista físico, os sistemas precipitantes são classificados em 
 estratiformes ou convectivos \cite{damian2011duas}. Essa classificação é baseada 
@@ -75,36 +226,17 @@ nos sistemas convectivos, elas acontecem de forma mais intensa e concentrada,
 caracterizando o tempo severo. As descargas atmosféricas são fenômenos que 
 acontecem principalmente nos sistemas convectivos. 
 
-```{python generate_plotly_figure_in_python}
-import plotly
-import plotly.graph_objs as go
-fig = {'data':[go.Scatter(x=[1,2,3,4],y=[1,4,9,16])],
-       'layout':go.Layout(title='Plot generated in python')}
-```
+Os dados utilizados neste trabalho são referentes ao segundo Período de Operação 
+Intensiva, que como supracitado, corresponde ainda ao período de seca na região.
+Sendo assim, as chuvas acontecem com pouca frequência e são oriundas 
+principalmente de sistemas convectivos. Esse comportamento pode ser observado no 
+gráfico da Figura \ref{fig:lightnings-histogram}, onde durante todo o período de 
+observação, somente em alguns dias houveram ocorrência de raios, e na maioria 
+dos dias em que aconteceram, a atividade elétrica se manifestou de forma intensa
+.
 
----
 
-```{python display_plot_from_python}
-plotly.offline.iplot(fig)
-```
 
-# Json export
 
-As an alternative, we export the python figure to json
 
-```{python export_plot_to_json}
-import json
-fig_as_json = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-```
 
----
-
-Display plot as a plotly widget from R
-
-and display the figure in R
-
-```{r display_plot_from_R}
-plotly::as_widget(
-  jsonlite::fromJSON(
-    reticulate::py$fig_as_json, simplifyVector=FALSE))
-```

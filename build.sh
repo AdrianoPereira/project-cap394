@@ -34,11 +34,6 @@ echo "Compiling bookdown..."
     exit 1
 }
 
-if [ $1 = deploy ]; then
-    echo "Started deploy..."
-    firebase deploy
-fi
-
 helpmenu() {
     echo "Usage: sh build.sh [OPTION]"
     echo "Script to compile and/or deploy bookdown "
