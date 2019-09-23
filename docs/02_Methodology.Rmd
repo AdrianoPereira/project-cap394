@@ -65,11 +65,23 @@ knitr::include_graphics('images/landcoverhorizontal.png', dpi = NA)
 
 
 ## Análise exploratória dos dados
+Neste trabalho serão utilizados somente os dados de descargas atmosféricas da 
+rede LINET, portanto, o período analisado será a partir do dia 29 de agosto a 07 
+de outubro, que foi o tempo em que a rede esteve em operação durante os 
+experimentos. Além dos dados das redes de detecção, compõe tabmbém o conjunto de 
+dados, informações de radar. As informações do radar indicam os valores de 
+alguns índices das nuvens. Os dados estão organizados em duas estruturas, na 
+primeira estrutura, cada linha além dos valores dos índices detectados pelo 
+radar, também possui a sua posição geográfica e seus índices associados a uma 
+matriz com 241 linhas e 241 colunas. Na outra estrutura, as nuvens são agrupadas 
+e as informações de seus índices são normalizadas. Daqui em diante, esses 
+conjuntos de dados serão chamados de Mat e Fam, respectivamente.
+
 Nesta seção serão feitas as devidas importações e também a análise exploratíoria
 dos dados.
 
+### Densidade e distribuição de raios
 
-### Carregando base de dados
 A célula abaixo faz a importação das bibliotecas que serão utilizadas na análise
 dos dados.
 
@@ -167,8 +179,8 @@ plotly::as_widget(
 ```
 
 Como mostrado no Gráfico 1, a quantidade de registros em que foram detectados 
-raios é muito menor do que a quantidade de registros em que não foi detectado
-nenhum raio. Nesse comjunto de dados, a quantidade de registros tende a diminuir
+raios é muito menor do que a quantidade de registros em que não foram detectados
+raios. Nesse comjunto de dados, a quantidade de registros tende a diminuir
 conforme aumenta a quantidade de detecções, ou seja, registros com muitos raios
 detectados a cada 12 minutos, é muito menor que a quantidade de registros com
 poucos raios detectados. Essa relação pode ser observado no Gráfico 2.
@@ -199,10 +211,10 @@ for r in ranges:
 #Alterando layout do gráfico
 fig.update_yaxes(title_text='Quantidade de registros')
 fig.update_xaxes(title_text='Raios detectados a cada 12 minutos')
-fig.update_layout(template='plotly_dark', title='Frequência do \
+fig.update_layout(template='plotly_dark', title='<b>Gráfico 2</b>: Frequência do \
 número de raios detectados a cada 12 minutos')
 
-# fig.show()
+fig.show()
 ```
 
 ```{python echo=FALSE}
@@ -218,22 +230,250 @@ plotly::as_widget(
 
 
 Do ponto de vista físico, os sistemas precipitantes são classificados em 
-estratiformes ou convectivos \cite{damian2011duas}. Essa classificação é baseada 
-no trabalho de [@steiner1995climatological], que faz uso principalmente dos 
-índices de refletividade obtidos por meio de radar. Enquanto nos sistemas 
-estratiformes as chuvas acontecem de forma moderada e com distribuição uniforme, 
-nos sistemas convectivos, elas acontecem de forma mais intensa e concentrada, 
-caracterizando o tempo severo. As descargas atmosféricas são fenômenos que 
-acontecem principalmente nos sistemas convectivos. 
+estratiformes ou convectivos [@damian2011duas]. Essa classificação é baseada no 
+trabalho de [@steiner1995climatological], que faz uso principalmente dos índices 
+de refletividade obtidos por meio de radar. Enquanto nos sistemas estratiformes 
+as chuvas acontecem de forma moderada e com distribuição uniforme, nos sistemas 
+convectivos, elas acontecem de forma mais intensa e concentrada, caracterizando 
+o tempo severo. As descargas atmosféricas são fenômenos que acontecem 
+principalmente nos sistemas convectivos. 
 
 Os dados utilizados neste trabalho são referentes ao segundo Período de Operação 
-Intensiva, que como supracitado, corresponde ainda ao período de seca na região.
-Sendo assim, as chuvas acontecem com pouca frequência e são oriundas 
-principalmente de sistemas convectivos. Esse comportamento pode ser observado no 
-gráfico da Figura \ref{fig:lightnings-histogram}, onde durante todo o período de 
-observação, somente em alguns dias houveram ocorrência de raios, e na maioria 
-dos dias em que aconteceram, a atividade elétrica se manifestou de forma intensa
-.
+Intensiva, que corresponde ainda ao período de seca na região. Sendo assim, as 
+chuvas acontecem com pouca frequência e são oriundas principalmente de sistemas 
+convectivos. Esse comportamento pode ser observado no Gráfico 3, onde durante 
+todo o período de observação, somente em alguns dias houveram ocorrência de 
+raios, e na maioria dos dias em que aconteceram, a atividade elétrica se 
+manifestou de forma intensa.
+
+```{python results='hide', message=FALSE, warning=FALSE}
+# Agrupando quantidade de raios detectaos por dia
+group = df.groupby(['month', 'day']).agg({'ttyyyxx3': 'sum'})
+amount = {}
+for i, row in group.iterrows():
+    m = str(i[0]) if len(str(i[0])) == 2 else '0'+str(i[0])
+    d = str(i[1]) if len(str(i[1])) == 2 else '0'+str(i[1])
+    key = '%s/%s'%(d, m)
+    if not amount.get(key):
+        amount[key] = {'lightning': 0}
+    amount[key]['lightning'] += row['ttyyyxx3']
+
+# Definindo dados de entrada para o gráfico
+labels, values = list(amount.keys()), \
+          [x['lightning'] for x in amount.values()]
+fig = go.Figure()
+
+#Construindo gráfico
+_ = fig.add_trace(
+    go.Scatter(y=values, x=labels, mode='lines+markers', \
+    line=dict(color='#808A9F', dash='dash'), name='Descargas atmosféricas')
+)
+_ = fig.add_trace(
+    go.Bar(y=values, x=labels, marker_color='#2C497F', 
+    name='Descargas atmosféricas')
+)
+
+#Alterando layout do gráfico
+fig.update_layout(
+    font={'size':14},
+    template='plotly_white',
+    xaxis_title='Dia observado',
+    showlegend=False,
+    margin=dict(t=35, b=0, r=0, l=0),
+    yaxis_title='Total de raios detectados por dia',
+    title='<b>Gráfico 3</b>: Total de raios detectados por dia'
+)
+
+fig.show()
+```
+
+```{python echo=FALSE}
+import json
+histogram_lightning = json.dumps( fig , cls=plotly.utils.PlotlyJSONEncoder)
+```
+
+```{r display_plot_from_R3, echo=FALSE}
+plotly::as_widget(
+  jsonlite::fromJSON(
+    reticulate::py$histogram_lightning, simplifyVector=FALSE))
+```
+
+A LINET é uma rede que opera em baixa frequência, e faz a detecção de raios 
+intra-nuvem e nuvem-solo. A rede possui a bordo um sistema de GPS que 
+possibilita também computar com precisão a localização onde ocorreu a descarga 
+atmosférica. Através desse recurso de geolocalização, é possível realizar 
+análises mais aprofundadas do comportamento da atividade elétrica em certas 
+regiões.  
+
+A Figura \@ref(fig:lightnings-in-cities) foi gerada a partir da quantidade de 
+raios detectados pela rede LINET em cada município da área de estudo. Os 
+municípios de Careiro, Presidente Figueiredo e Manaus, foram os que mais tiveram 
+ocorrência de raios com 12753, 10758 e 10305 detecções respectivamente. Estudos 
+como o que foi feito por [@rebeca2019propriedades], indicam que a atividade 
+elétrica das nuvens tende a ser mais intensa próximo aos rios, o que também pode 
+ser observado na Figura \@ref(fig:lightnings-in-cities), já que os município com 
+maior incidência de descargas elétricas, ficam próximos a corpos d'água, como a 
+comunidade ribeirinha de Careiro.
+
+```{r lightnings-in-cities, fig.cap="Densidade de descargas atmosféricas por município.", echo = FALSE}
+knitr::include_graphics('images/lightning-in-cities.png', dpi = NA)
+```
+
+### Análise dos índices meteorológicos
+
+A refletividade ($Z$) é o principal índice obtido através de radares 
+meteorológicos. A partir desse índice que outros são derivados, como o conteúdo 
+de água líquida integrado verticalmente (VIL - sigla do inglês, *Vertically* 
+*Integrated Liquid*) e a taxa de precipitação ($R$) [@rebeca2019propriedades]. 
+Estes foram os principais índices utilizados no desenvolvimento deste trabalho. 
+O motivo da escolha destes atributos, foi que ao ser aplicado o algoritmo de 
+árvore de decisão [@safavian1991survey], estes atributos foram os que que melhor 
+se destacaram na separação dos dados com e sem detecção de descargas elétricas. 
+Além disso, outros trabalhos com o propósito de estudar a atividade elétrica de 
+sistemas convectivos, também fizeram uso destes índices, por exemplo 
+[@rebeca2019propriedades] e [@chinchay2018uso].
+
+O comportamento dos índices meteorológicos sofrem uma certa variação quando há 
+ocorrência de descargas atmosféricas, como pode ser observado no Gráfico 4. 
+Quando a atividade elétrica está intensa nos sistemas convectivos e acontece 
+algum raio, os índices tendem a estarem também com valores altos, o que acaba 
+caracterizando as condições de tempo severo.
+
+```{python results='hide', message=FALSE, warning=FALSE}
+# Definindo parametros de entrada para o gráfico 
+rows, cols, idx = 1, 3, 0
+records = 100
+indexes = ['maxz', 'ttvil', 'maxprec']
+yaxes = [
+    "Refletividade (dBZ)",
+    "VIL (kg m<sup>-2</sup>)",
+    "Precipitação (mm/h)"
+]
+colors = [
+    ('#480B0B', '#C61D1D'),
+    ('#0E4612', '#30FF41'),
+    ('#00355D', '#0090FF')
+]
+
+# Construção do gráfico
+fig = make_subplots(rows=rows, cols=cols, 
+              subplot_titles=('Máx. Refletividade', 'VIL', 'Máx Precipitação'))
+for i in range(rows):
+    for j in range(cols):
+        _ = fig.add_trace(
+            go.Box(y=no.sample(records)[indexes[idx]], #boxpoints='all',
+            name='Sem detecção de raios (%s)'%(indexes[idx]),
+            marker_color=colors[idx][0], boxmean=False),
+            row=i+1, col=j+1
+        )
+        _ = fig.add_trace(
+            go.Box(y=yes.sample(records)[indexes[idx]], #boxpoints='all',
+            name='Com detecção de raios (%s)'%(indexes[idx]),
+            marker_color=colors[idx][1]),
+            row=i+1, col=j+1
+        )
+        _ = fig.update_yaxes(title_text=yaxes[idx], row=i+1, col=j+1)
+        _ = fig.update_xaxes(showticklabels=False, row=i+1, col=j+1)
+        idx+=1
+
+# Alteração da estrutura do gráfico
+fig.update_layout(
+    template='plotly_white',
+    legend_orientation="h",
+    margin=dict(t=75, b=0, r=0, l=0),
+    title='<b>Gráfico 4</b>: Distribuição de alguns índices em subconjuntos com e\
+     sem raios'
+)
+
+fig.show()
+```
+
+```{python echo=FALSE}
+import json
+indexes = json.dumps( fig , cls=plotly.utils.PlotlyJSONEncoder)
+```
+
+```{r display_plot_from_R4, echo=FALSE}
+plotly::as_widget(
+  jsonlite::fromJSON(
+    reticulate::py$indexes, simplifyVector=FALSE))
+```
+
+O conjunto de dados possui uma baixa frequência de detecção de raios, ou seja, a 
+quantidade de registros em que foram detectados raios é muito inferior que 
+quantidade de registros onde não foram detectados. Isso pode provocar um certo 
+ruído na distribuição dos valores do índices. Com o propósito de suavizar este 
+ruído, foram aplicados alguns limiares de detecções de raios, para que então, 
+seja analisada a distribuição dos valores do índice de máxima refletividade. 
+Na Gráfico 5, pode ser observado que a medida que se aumenta o limite da 
+quantidade de raios detectados, o índice de máxima refletividade dos 
+subconjuntos abaixo dos limiares ficam mais distantes dos subconjuntos acima.
+
+
+```{python results='hide', message=FALSE, warning=FALSE}
+# Definição de alguns parâmetros do gráfico
+thresholds = [1, 5, 10]
+records = 40
+indexs = [(1, 1), (2, 1), (3, 1)]
+colors = [
+    ('#480B0B', '#C61D1D'),
+    ('#0E4612', '#30FF41'),
+    ('#00355D', '#0090FF')
+]
+
+# Construção do gráfico
+fig = make_subplots(rows=3, cols=1, shared_xaxes=True)
+for index, threshold, color in zip(indexs, thresholds, colors):
+    row, line = index
+    cset1, cset2 = color
+    no = df[df['ttyyyxx3'] < threshold].sample(records)
+    yes = df[df['ttyyyxx3'] >= threshold].sample(records)
+    
+    _ = fig.add_trace (
+        go.Box(x=no['maxz'], 
+        name='Subconjunto com menos de %s raios detectados'%threshold,
+        marker_color=cset1),
+        row=row, col=line,
+    )
+
+    _ = fig.add_trace (
+        go.Box(x=yes['maxz'],
+        name='Subconjunto com %s ou mais raios detectados'%threshold,
+        marker_color=cset2),
+        row=row, col=line
+    )
+    
+    
+    _ = fig.update_yaxes(
+        showticklabels=False
+    )
+
+_ = fig['layout']['xaxis3'].update(title='Maximum (dBZ)')
+
+# Alteração do estrutura do gráfico
+fig.update_layout(
+    legend=dict(x=-0.11, y=-0.30),
+    margin=dict(t=75, b=0, r=0, l=0),
+    legend_orientation="h",
+    font={'size':14},
+    title='<b>Gráfico 5</b>: Máxima refletividade em dados com e sem raios<br> \
+    detectados', template='plotly_white',
+)
+
+fig.show()
+```
+
+```{python echo=FALSE}
+import json
+indexes2 = json.dumps( fig , cls=plotly.utils.PlotlyJSONEncoder)
+```
+
+```{r display_plot_from_R5, echo=FALSE}
+plotly::as_widget(
+  jsonlite::fromJSON(
+    reticulate::py$indexes2, simplifyVector=FALSE))
+```
+
 
 
 

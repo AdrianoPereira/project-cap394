@@ -44,6 +44,7 @@ helpmenu() {
 
 deployfirebase() {
     firebase deploy
+    google-chrome https://cap-394.firebaseapp.com
 }
 while [ ! $# -eq 0 ]
 do 
