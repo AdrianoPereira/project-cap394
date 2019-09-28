@@ -23,7 +23,6 @@ def rf_classifier(df, threshold=1, records=1000, test_size=.2):
         'ttvil', 'meanprec', 'maxprec'
     ]
 
-
     labels = []
     for i, row in df.iterrows():
         if row[columns[0]] < threshold:
